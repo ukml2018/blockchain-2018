@@ -4,7 +4,7 @@ set -ex
 
 source .bluemix/config.sh
 
-export COMPOSER_VERSION=0.19.5
+export COMPOSER_VERSION=0.20
 
 function exit_on_error {
     if [ "$?" = "0" ]; then
@@ -61,7 +61,7 @@ function install_jq {
 
 function do_curl {
     HTTP_RESPONSE=$(mktemp)
-    HTTP_STATUS=$(curl -w '%{http_code}' -o ${HTTP_RESPONSE} "$@")
+    HTTP_STATUS=$(curl -k -w '%{http_code}' -o ${HTTP_RESPONSE} "$@")
     cat ${HTTP_RESPONSE}
     rm -f ${HTTP_RESPONSE}
     if [[ ${HTTP_STATUS} -ge 200 && ${HTTP_STATUS} -lt 300 ]]
