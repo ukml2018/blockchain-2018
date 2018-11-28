@@ -4,7 +4,7 @@ set -ex
 
 source .bluemix/config.sh
 
-export COMPOSER_VERSION=0.20
+export COMPOSER_VERSION=0.20.4
 
 function exit_on_error {
     if [ "$?" = "0" ]; then
